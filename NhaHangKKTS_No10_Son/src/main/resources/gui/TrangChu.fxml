@@ -46,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="btnNhanVien" defaultButton="true" mnemonicParsing="false" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="73.0" prefWidth="193.0" style="-fx-background-color: #00bfff; -fx-border-width: 2; -fx-border-color: #ffffff;" text="NHÂN VIÊN" textFill="#fafafa">
+                  <Button fx:id="btnNhanVien" defaultButton="true" mnemonicParsing="false" onAction="#handleNhanVienClick" onMouseEntered="#handleMouseEntered" onMouseExited="#handleMouseExited" prefHeight="73.0" prefWidth="193.0" style="-fx-background-color: #00bfff; -fx-border-width: 2; -fx-border-color: #ffffff;" text="NHÂN VIÊN" textFill="#fafafa">
                      <font>
                         <Font size="24.0" />
                      </font>

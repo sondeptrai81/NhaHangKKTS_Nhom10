@@ -8,19 +8,21 @@ public class NhanVien {
 	private String tenNV;
 	private boolean gioiTinh;
 	private String sDT;
-	private String trangThai;
+	private TrangThaiNhanVien trangThai;
+	private String chucVu;
 	private LocalDate ngayVaoLam;
 	private LocalDate ngayNghiLam;
 	private LocalDate ngaySinh;
 
-	public NhanVien(String maNV, String tenNV, boolean gioiTinh, String sDT, String trangThai, LocalDate ngayVaoLam,
-			LocalDate ngayNghiLam, LocalDate ngaySinh) {
+	public NhanVien(String maNV, String tenNV, boolean gioiTinh, String sDT, TrangThaiNhanVien trangThai, String chucVu, LocalDate ngayVaoLam,
+					LocalDate ngayNghiLam, LocalDate ngaySinh) {
 		super();
 		this.maNV = maNV;
 		this.tenNV = tenNV;
 		this.gioiTinh = gioiTinh;
 		this.sDT = sDT;
 		this.trangThai = trangThai;
+		this.chucVu = chucVu;
 		this.ngayVaoLam = ngayVaoLam;
 		this.ngayNghiLam = ngayNghiLam;
 		this.ngaySinh = ngaySinh;
@@ -54,20 +56,28 @@ public class NhanVien {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public String getsDT() {
+	public String getSDT() {
 		return sDT;
 	}
 
-	public void setsDT(String sDT) {
+	public void setSDT(String sDT) {
 		this.sDT = sDT;
 	}
 
-	public String getTrangThai() {
+	public TrangThaiNhanVien getTrangThai() {
 		return trangThai;
 	}
 
-	public void setTrangThai(String trangThai) {
+	public void setTrangThai(TrangThaiNhanVien trangThai) {
 		this.trangThai = trangThai;
+	}
+
+	public String getChucVu() {
+		return chucVu;
+	}
+
+	public void setChucVu(String chucVu) {
+		this.chucVu = chucVu;
 	}
 
 	public LocalDate getNgayVaoLam() {
@@ -93,6 +103,7 @@ public class NhanVien {
 	public void setNgaySinh(LocalDate ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
+
 
 	@Override
 	public int hashCode() {

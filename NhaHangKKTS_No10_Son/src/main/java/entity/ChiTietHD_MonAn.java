@@ -13,12 +13,20 @@ public class ChiTietHD_MonAn {
 		this.soLuong = soLuong;
 		this.thanhTien = thanhTien;
 	}
+	public ChiTietHD_MonAn(String tenMonAn, double gia, int soLuong, double vat, double thanhTien) {
+		this.monAn = new MonAn(); // Khởi tạo đối tượng MonAn
+		this.monAn.setTenMonAn(tenMonAn);
+		this.monAn.setGia(gia);
+		this.monAn.setVAT(vat);
+		this.soLuong = soLuong;
+		this.thanhTien = thanhTien;
+	}
 
 	public ChiTietHD_MonAn() {
 		super();
 	}
 
-	public HoaDon getHoaDon() {
+    public HoaDon getHoaDon() {
 		return hoaDon;
 	}
 
@@ -48,6 +56,15 @@ public class ChiTietHD_MonAn {
 
 	public void setThanhTien(double thanhTien) {
 		this.thanhTien = thanhTien;
+	}
+	public double getVAT() {
+		return this.monAn.getVAT();
+	}
+	public double getGia() {
+		return this.monAn.getGia();
+	}
+	public String getTenMonAn() {
+		return monAn.getTenMonAn();
 	}
 
 	@Override

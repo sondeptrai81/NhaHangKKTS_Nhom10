@@ -2,14 +2,10 @@ package control;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -30,6 +26,7 @@ public class TrangChu_Control {
     private void handleMouseExited(MouseEvent event) {
         ((Button) event.getSource()).setStyle("-fx-background-color: #00b6f3; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;");
     }
+
     @FXML
     public void handleDatBanClick(MouseEvent mouseEvent) {
     }
@@ -37,20 +34,31 @@ public class TrangChu_Control {
     @FXML
     public void handleThanhToanClick() {
         try {
-            Parent thanhToanContent = FXMLLoader.load(getClass().getResource("/gui/ThanhToan_1.fxml"));
+            Parent thanhToanContent = FXMLLoader.load(getClass().getResource("/gui/ThanhToan.fxml"));
             showPane.getChildren().clear();
             showPane.getChildren().add(thanhToanContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     @FXML
-    public void handleThongKeClick( ) {
+    public void handleThongKeClick() {
         try {
             Parent ThongKeContent = FXMLLoader.load(getClass().getResource("/gui/ThongKe.fxml"));
             showPane.getChildren().clear();
             showPane.getChildren().add(ThongKeContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @FXML
+    public void handleNhanVienClick() {
+        try {
+            Parent ThongKeContent = FXMLLoader.load(getClass().getResource("/gui/NhanVien.fxml"));
+            showPane.getChildren().clear();
+            showPane.getChildren().add(ThongKeContent);
         } catch (IOException e) {
             e.printStackTrace();
         }

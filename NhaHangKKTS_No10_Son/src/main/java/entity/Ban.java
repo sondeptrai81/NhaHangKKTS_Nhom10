@@ -7,7 +7,31 @@ public class Ban {
 	private int soLuongGhe;
 	private KhuVuc khuVuc;
 	private TrangThaiBan trangThaiBan;
+	public String getMaBan() {
+		return maBan;
+	}
+	public void setMaBan(String maBan) {
+		this.maBan = maBan;
+	}
+	public int getSoLuongGhe() {
+		return soLuongGhe;
+	}
+	public void setSoLuongGhe(int soLuongGhe) {
+		this.soLuongGhe = soLuongGhe;
+	}
+	public KhuVuc getKhuVuc() {
+		return khuVuc;
+	}
+	public void setKhuVuc(KhuVuc khuVuc) {
+		this.khuVuc = khuVuc;
+	}
+	public TrangThaiBan getTrangThaiBan() {
+		return trangThaiBan;
+	}
 
+	public void setTrangThaiBan(TrangThaiBan trangThaiBan) {
+		this.trangThaiBan = trangThaiBan;
+	}
 	public Ban(String maBan, int soLuongGhe, KhuVuc khuVuc, TrangThaiBan trangThaiBan) {
 		super();
 		this.maBan = maBan;
@@ -15,6 +39,11 @@ public class Ban {
 		this.khuVuc = khuVuc;
 		this.trangThaiBan = trangThaiBan;
 	}
+	public Ban(String maBan) {
+		super();
+		this.maBan = maBan;
+	}
+
 
 	public Ban() {
 		super();

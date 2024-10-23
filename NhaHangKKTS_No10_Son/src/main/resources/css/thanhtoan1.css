@@ -1,0 +1,28 @@
+
+#table_tt .column-header {
+    -fx-pref-height: 50px;
+    -fx-font-size: 16px;
+    -fx-background-color: rgb(26, 140, 211);
+    -fx-border-color: #00BFFF;
+    -fx-border-width: 0 0 2px 0;
+}
+
+#table_tt .cell {
+    -fx-alignment: CENTER;
+    -fx-pref-height: 50px;
+    -fx-font-size: 25px;
+    -fx-border-color: #00BFFF;
+    -fx-border-width: 0 1px 0 0;
+}
+
+/* Đặt viền cho TableView */
+#table_tt {
+    -fx-border-color: transparent;
+}
+
+/* Đặt viền cho các ô hàng */
+#table_tt .table-row-cell {
+    -fx-border-color: #00BFFF;
+    -fx-border-width: 0 1px 1px 0;
+}
+

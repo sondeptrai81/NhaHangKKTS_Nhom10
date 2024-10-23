@@ -18,7 +18,7 @@ public class MonAn {
 		this.loaiMonAn = loaiMonAn;
 		this.gia = gia;
 		this.trangThaiMonAn = trangThaiMonAn;
-		VAT = vAT;
+		this.VAT = vAT;
 	}
 
 	public MonAn() {
@@ -69,8 +69,8 @@ public class MonAn {
 		return VAT;
 	}
 
-	public void setVAT(double vAT) {
-		VAT = vAT;
+	public void setVAT(double vat) {
+		this.VAT = vat;
 	}
 
 	@Override

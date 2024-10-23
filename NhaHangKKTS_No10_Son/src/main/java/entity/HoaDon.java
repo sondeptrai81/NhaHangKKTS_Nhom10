@@ -1,5 +1,7 @@
 package entity;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Objects;
@@ -31,11 +33,31 @@ public class HoaDon {
 		this.khuyenMai = khuyenMai;
 	}
 
+	public HoaDon(String maHD,String tenKhachHang, String sdt, LocalDate ngayTaoHD, LocalTime gioDatBan, String maBan) {
+		this.maHD=maHD;
+		this.khachHang = new KhachHang();
+		this.khachHang.setTenKH(tenKhachHang);  // Đảm bảo set tên khách hàng đúng thuộc tính
+		this.khachHang.setsDT(sdt);  // Đảm bảo set đúng số điện thoại
+		this.ngayTaoHD = ngayTaoHD;
+		this.gioDatBan = gioDatBan;
+		this.ban = new Ban();
+		this.ban.setMaBan(maBan);
+	}
+
+	public String getTenKH() {
+		return khachHang.getTenKH();
+	}
+	public String getSDT() {
+		return khachHang.getsDT();
+	}
+	public String getMaBan() {
+		return ban.getMaBan();
+	}
+
 	public HoaDon() {
 		super();
 	}
-
-	public String getMaHD() {
+    public String getMaHD() {
 		return maHD;
 	}
 

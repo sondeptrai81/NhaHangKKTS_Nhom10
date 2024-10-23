@@ -5,8 +5,7 @@
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -14,36 +13,17 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 
 <AnchorPane layoutY="51.0" prefHeight="592.0" prefWidth="1322.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ThongKeTongDoanhThu_Control">
     <children>
-        <HBox layoutX="33.8" layoutY="12.8" prefHeight="27.0" prefWidth="436.0" spacing="30.0" AnchorPane.leftAnchor="33.8" AnchorPane.topAnchor="12.8">
-            <ComboBox fx:id="dayCombo" prefHeight="26.0" prefWidth="70.0">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor></ComboBox>
-            <ComboBox fx:id="monthCombo" prefHeight="26.0" prefWidth="69.0">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor></ComboBox>
-            <ComboBox fx:id="yearCombo" prefHeight="26.0" prefWidth="98.0">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor></ComboBox>
-            <Button mnemonicParsing="false" onMouseClicked="#handleClickLoc" prefHeight="26.0" prefWidth="92.0" style="-fx-background-color: white ; -fx-border-color: black;" text="TÌM KIẾM">
-                <cursor>
-                    <Cursor fx:constant="HAND" />
-                </cursor></Button>
-
-        </HBox>
+      <DatePicker fx:id="datePicker" layoutX="124.0" layoutY="14.0" onAction="#locNgay" />
 
         <TableView fx:id="invoiceTable" layoutY="52.8" prefHeight="352.0" prefWidth="1312.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="53.0">
             <columns>
                 <TableColumn prefWidth="56.0" text="STT" />
-                <TableColumn prefWidth="264.0000114440918" text="Tên khách hàng" />
-                <TableColumn prefWidth="219.19998168945312" text="SDT" />
-                <TableColumn prefWidth="241.5999755859375" text="Ngày tạo hóa đơn" />
+                <TableColumn prefWidth="382.4000663757324" text="Tên khách hàng" />
+                <TableColumn prefWidth="193.59991455078125" text="SDT" />
+                <TableColumn prefWidth="149.5999755859375" text="Ngày tạo hóa đơn" />
                 <TableColumn minWidth="8.0" prefWidth="88.800048828125" text="Bàn" />
                 <TableColumn prefWidth="224.800048828125" text="Tên nhân viên" />
                 <TableColumn prefWidth="212.800048828125" text="Tổng tiền" />

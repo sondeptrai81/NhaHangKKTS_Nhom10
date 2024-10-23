@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="795.0" prefWidth="1535.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button layoutX="270.0" layoutY="347.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="505.0" text="Button" />
+      <Pane layoutX="6.0" prefHeight="795.0" prefWidth="264.0" style="-fx-background-color: black;" />
+   </children>
+</Pane>

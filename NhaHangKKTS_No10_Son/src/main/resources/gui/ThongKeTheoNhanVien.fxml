@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane layoutY="51.0" prefHeight="650.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ThongKeTheoNhanVien_Control">
+   <children>
+      <TableView fx:id="invoiceTable1" layoutX="5.0" layoutY="220.0" prefHeight="429.0" prefWidth="1312.0">
+         <columns>
+            <TableColumn prefWidth="56.0" text="STT" />
+            <TableColumn prefWidth="264.0000114440918" text="Tên khách hàng" />
+            <TableColumn prefWidth="219.19998168945312" text="SDT" />
+            <TableColumn prefWidth="271.20001220703125" text="Ngày tạo hóa đơn" />
+            <TableColumn minWidth="8.0" prefWidth="158.39996337890625" text="Bàn" />
+            <TableColumn prefWidth="341.60003662109375" text="Tổng tiền" />
+         </columns>
+      </TableView>
+
+      <TableView fx:id="invoiceTable" layoutX="-3.0" layoutY="39.0" prefHeight="174.0" prefWidth="1322.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="39.0">
+         <columns>
+            <TableColumn prefWidth="179.99999690055847" text="Mã nhân viên" />
+            <TableColumn prefWidth="402.40000915527344" text="Tên nhân viên" />
+            <TableColumn prefWidth="278.4000244140625" text="Số điện thoại" />
+            <TableColumn prefWidth="243.9998779296875" text="Trạng thái" />
+            <TableColumn prefWidth="223.99993896484375" text="Doanh thu" />
+         </columns>
+      </TableView>
+      <TextField fx:id="textTim" layoutX="1039.0" layoutY="5.6" onKeyPressed="#handleEnterKey" onMouseClicked="#handleClickText" prefHeight="26.0" prefWidth="258.0" promptText="Nhập số điện thoại" AnchorPane.topAnchor="5.6">
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <ImageView fx:id="clickSearch" fitHeight="26.0" fitWidth="19.0" layoutX="1275.0" layoutY="9.0" onMouseClicked="#handleClickSearch" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/search.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </ImageView>
+   </children>
+</AnchorPane>

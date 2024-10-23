@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="parentAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="729.0" prefWidth="1375.0" style="-fx-background-color: rgb(217, 217, 217);" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ThongKe_Control">
+    <TabPane layoutX="7.0" layoutY="3.0" prefHeight="722.0" prefWidth="1299.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="7.400000000000091" AnchorPane.topAnchor="3.0">
+        <tabs>
+            <Tab fx:id="tabTongDoanhThu" text="TỔNG DOANH THU">
+
+            </Tab>
+            <Tab fx:id="tabMonAn" text="MÓN ĂN">
+            </Tab>
+            <Tab fx:id="tabNhanVien" text="NHÂN VIÊN">
+            </Tab>
+            <Tab fx:id="tabBanDat" text="BÀN ĐẶT">
+            </Tab>
+            <Tab fx:id="tabDoanhThu" text="DOANH THU">
+            </Tab>
+        </tabs>
+    </TabPane>
+</AnchorPane>

@@ -30,6 +30,9 @@ target/
 build/
 !**/src/main/**/build/
 !**/src/test/**/build/
+# Ignore database files
+*.ldf
+*.mdf
 
 ### VS Code ###
 .vscode/

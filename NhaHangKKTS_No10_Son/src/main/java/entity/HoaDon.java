@@ -17,6 +17,25 @@ public class HoaDon {
 	private double tienCoc;
 	private LocalTime gioDatBan;
 	private KhuyenMai khuyenMai;
+	private double tongTien;
+
+
+	public HoaDon(String maHD,String tenKhachHang, String sdt, LocalDate ngayTaoHD, String maBan,String
+			tenNhanVien,double tongTien) {
+		this.maHD=maHD;
+
+		this.khachHang = new KhachHang();
+		this.khachHang.setTenKH(tenKhachHang);
+		this.khachHang.setsDT(sdt);
+		this.ngayTaoHD = ngayTaoHD;
+		this.ban = new Ban();
+		this.ban.setMaBan(maBan);
+		this.nhanVien= new NhanVien();
+		this.nhanVien.setTenNV(tenNhanVien);
+		this.tongTien=tongTien;
+	}
+
+
 
 	public HoaDon(String maHD, LocalDate ngayTaoHD, TrangThaiHoaDon trangThaiHoaDon, LocalDate ngayDat, Ban ban,
 			NhanVien nhanVien, KhachHang khachHang, double tienCoc, LocalTime gioDatBan, KhuyenMai khuyenMai) {
@@ -33,15 +52,28 @@ public class HoaDon {
 		this.khuyenMai = khuyenMai;
 	}
 
+
+
 	public HoaDon(String maHD,String tenKhachHang, String sdt, LocalDate ngayTaoHD, LocalTime gioDatBan, String maBan) {
 		this.maHD=maHD;
 		this.khachHang = new KhachHang();
-		this.khachHang.setTenKH(tenKhachHang);  // Đảm bảo set tên khách hàng đúng thuộc tính
-		this.khachHang.setsDT(sdt);  // Đảm bảo set đúng số điện thoại
+		this.khachHang.setTenKH(tenKhachHang);
+		this.khachHang.setsDT(sdt);
 		this.ngayTaoHD = ngayTaoHD;
 		this.gioDatBan = gioDatBan;
 		this.ban = new Ban();
 		this.ban.setMaBan(maBan);
+	}
+
+
+
+
+	public double getTongTien() {
+		return tongTien;
+	}
+
+	public void setTongTien(double tongTien) {
+		this.tongTien = tongTien;
 	}
 
 	public String getTenKH() {
@@ -53,6 +85,11 @@ public class HoaDon {
 	public String getMaBan() {
 		return ban.getMaBan();
 	}
+
+	public String getTenNV() {
+		return nhanVien.getTenNV();
+	}
+
 
 	public HoaDon() {
 		super();

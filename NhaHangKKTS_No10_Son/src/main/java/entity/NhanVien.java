@@ -32,6 +32,10 @@ public class NhanVien {
 		super();
 	}
 
+	public NhanVien(String maNV) {
+		this.maNV = maNV;
+	}
+
 	public String getMaNV() {
 		return maNV;
 	}
@@ -43,6 +47,7 @@ public class NhanVien {
 	public String getTenNV() {
 		return tenNV;
 	}
+
 
 	public void setTenNV(String tenNV) {
 		this.tenNV = tenNV;

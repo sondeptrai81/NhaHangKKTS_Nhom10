@@ -10,24 +10,25 @@
 
 <AnchorPane layoutY="51.0" prefHeight="650.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ThongKeTheoNhanVien_Control">
    <children>
-      <TableView fx:id="invoiceTable1" layoutX="5.0" layoutY="220.0" prefHeight="429.0" prefWidth="1312.0">
+
+
+      <TableView fx:id="nhanVienTable" layoutX="-3.0" layoutY="39.0" onMouseClicked="#clickNhanVienTable" prefHeight="174.0" prefWidth="1322.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="39.0">
          <columns>
-            <TableColumn prefWidth="56.0" text="STT" />
-            <TableColumn prefWidth="264.0000114440918" text="Tên khách hàng" />
-            <TableColumn prefWidth="219.19998168945312" text="SDT" />
-            <TableColumn prefWidth="271.20001220703125" text="Ngày tạo hóa đơn" />
-            <TableColumn minWidth="8.0" prefWidth="158.39996337890625" text="Bàn" />
-            <TableColumn prefWidth="341.60003662109375" text="Tổng tiền" />
+            <TableColumn fx:id="colMaNV" prefWidth="180.0" text="Mã nhân viên" />
+            <TableColumn fx:id="colTenNV" prefWidth="402.4" text="Tên nhân viên" />
+            <TableColumn fx:id="colSDT" prefWidth="278.4" text="Số điện thoại" />
+            <TableColumn fx:id="colTrangThai" prefWidth="244.0" text="Trạng thái" />
+            <TableColumn fx:id="colDoanhThu" prefWidth="224.0" text="Doanh thu" />
          </columns>
       </TableView>
-
-      <TableView fx:id="invoiceTable" layoutX="-3.0" layoutY="39.0" prefHeight="174.0" prefWidth="1322.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="39.0">
+      <TableView fx:id="hoaDonTable" layoutX="5.0" layoutY="220.0" prefHeight="429.0" prefWidth="1312.0">
          <columns>
-            <TableColumn prefWidth="179.99999690055847" text="Mã nhân viên" />
-            <TableColumn prefWidth="402.40000915527344" text="Tên nhân viên" />
-            <TableColumn prefWidth="278.4000244140625" text="Số điện thoại" />
-            <TableColumn prefWidth="243.9998779296875" text="Trạng thái" />
-            <TableColumn prefWidth="223.99993896484375" text="Doanh thu" />
+            <TableColumn fx:id="colMaHD" prefWidth="160.00000381469727" text="Mã hoá đơn" />
+            <TableColumn fx:id="colTenKH" prefWidth="242.3999481201172" text="Tên khách hàng" />
+            <TableColumn fx:id="colSDTKH" prefWidth="200.0" text="SDT" />
+            <TableColumn fx:id="colNgayTao" prefWidth="192.79998779296875" text="Ngày tạo hóa đơn" />
+            <TableColumn fx:id="colBan" prefWidth="128.00006103515625" text="Bàn" />
+            <TableColumn fx:id="colTongTien" prefWidth="412.0" text="Tổng tiền" />
          </columns>
       </TableView>
       <TextField fx:id="textTim" layoutX="1039.0" layoutY="5.6" onKeyPressed="#handleEnterKey" onMouseClicked="#handleClickText" prefHeight="26.0" prefWidth="258.0" promptText="Nhập số điện thoại" AnchorPane.topAnchor="5.6">

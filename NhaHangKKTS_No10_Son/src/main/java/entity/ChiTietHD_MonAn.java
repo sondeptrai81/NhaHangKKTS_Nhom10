@@ -22,6 +22,19 @@ public class ChiTietHD_MonAn {
 		this.thanhTien = thanhTien;
 	}
 
+	public ChiTietHD_MonAn(String tenMonAn, double gia, int soLuong,double tongTien) {
+		this.monAn = new MonAn();
+		this.monAn.setTenMonAn(tenMonAn);
+		this.monAn.setGia(gia);
+		this.soLuong = soLuong;
+		this.hoaDon= new HoaDon();
+		this.hoaDon.setTongTien(tongTien);
+	}
+
+	public double getDoanhThu() {
+		return monAn.getGia() * soLuong;
+	}
+
 	public ChiTietHD_MonAn() {
 		super();
 	}

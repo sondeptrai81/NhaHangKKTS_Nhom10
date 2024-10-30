@@ -2,7 +2,6 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +9,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane layoutY="51.0" prefHeight="730.0" prefWidth="1352.0" xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ThongKeTheoMonAn_Control">
 
@@ -18,25 +16,16 @@
       <DatePicker fx:id="datePicker" layoutX="125.0" layoutY="13.0" onAction="#locNgay" prefHeight="26.0" prefWidth="174.0" />
       <TableView fx:id="tableView" layoutX="2.0" layoutY="46.0" prefHeight="572.0" prefWidth="1326.0">
          <columns>
-            <TableColumn prefWidth="106.39999079704285" text="STT" />
-            <TableColumn prefWidth="488.00001525878906" text="Tên món ăn" />
-            <TableColumn prefWidth="216.79998779296875" text="Giá" />
-            <TableColumn prefWidth="116.0" text="Số lượng" />
-            <TableColumn prefWidth="402.39996337890625" text="Doanh thu" />
+            <TableColumn fx:id="colTenMonAn" prefWidth="381.60001826286316" text="Tên món ăn" />
+            <TableColumn fx:id="colGia" prefWidth="261.5999755859375" text="Giá" />
+            <TableColumn fx:id="colSoLuong" prefWidth="140.0" text="Số lượng" />
+            <TableColumn fx:id="colDoanhThu" prefWidth="539.2000122070312" text="Doanh thu" />
          </columns>
       </TableView>
 
-      <!-- Tổng doanh thu -->
-      <HBox alignment="CENTER_RIGHT" layoutX="1010.0" layoutY="628.0" spacing="10">
-         <Label text="TỔNG DOANH THU:" />
-         <Label style="-fx-text-fill: red;" text="630.000 VND">
-            <font>
-               <Font name="System Bold" size="16" />
-            </font>
-         </Label>
-      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="1010.0" layoutY="628.0" spacing="10" />
 
-      <TextField fx:id="textTim" layoutX="494.0" layoutY="13.4" onKeyPressed="#handleEnterKey" onMouseClicked="#handleClickText" prefHeight="26.0" prefWidth="258.0" promptText="Nhập số điện thoại" AnchorPane.topAnchor="13.4">
+      <TextField fx:id="textTim" layoutX="494.0" layoutY="13.4" onKeyPressed="#handleEnterKey" onMouseClicked="#handleClickText" prefHeight="26.0" prefWidth="258.0" promptText="Nhập tên món ăn" AnchorPane.topAnchor="13.4">
          <cursor>
             <Cursor fx:constant="TEXT" />
          </cursor>
@@ -50,7 +39,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-
-      <Label fx:id="tongDoanhThu" layoutX="1021.0" layoutY="351.0" prefHeight="35.0" prefWidth="288.0" style="-fx-font-size: 24; -fx-text-fill: red;" textAlignment="CENTER" textFill="#df0c0c" />
    </children>
 </AnchorPane>

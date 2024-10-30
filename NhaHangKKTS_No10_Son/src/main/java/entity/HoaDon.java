@@ -17,13 +17,13 @@ public class HoaDon {
 	private double tienCoc;
 	private LocalTime gioDatBan;
 	private KhuyenMai khuyenMai;
+	private int soLanDat;
 	private double tongTien;
 
 
 	public HoaDon(String maHD,String tenKhachHang, String sdt, LocalDate ngayTaoHD, String maBan,String
 			tenNhanVien,double tongTien) {
 		this.maHD=maHD;
-
 		this.khachHang = new KhachHang();
 		this.khachHang.setTenKH(tenKhachHang);
 		this.khachHang.setsDT(sdt);
@@ -34,7 +34,17 @@ public class HoaDon {
 		this.nhanVien.setTenNV(tenNhanVien);
 		this.tongTien=tongTien;
 	}
-
+	public HoaDon(String maHD,String tenKhachHang, String sdt, LocalDate ngayTaoHD, String maBan
+			,double tongTien) {
+		this.maHD=maHD;
+		this.khachHang = new KhachHang();
+		this.khachHang.setTenKH(tenKhachHang);
+		this.khachHang.setsDT(sdt);
+		this.ngayTaoHD = ngayTaoHD;
+		this.ban = new Ban();
+		this.ban.setMaBan(maBan);
+		this.tongTien=tongTien;
+	}
 
 
 	public HoaDon(String maHD, LocalDate ngayTaoHD, TrangThaiHoaDon trangThaiHoaDon, LocalDate ngayDat, Ban ban,
@@ -64,8 +74,6 @@ public class HoaDon {
 		this.ban = new Ban();
 		this.ban.setMaBan(maBan);
 	}
-
-
 
 
 	public double getTongTien() {

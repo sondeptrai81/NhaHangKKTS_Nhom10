@@ -1,5 +1,6 @@
 package control;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,7 +16,18 @@ public class TrangChu_Control {
     @FXML
     private Button btnThanhToan;
     @FXML
+    private Button btnNhanVien;
+
+    @FXML
+    private Button btnMonAn;
+    @FXML
+    private  Button btnThongKe;
+
+    @FXML
     private Pane showPane;
+    private Button selectedButton = null;
+
+    
 
     @FXML
     private void handleMouseEntered(MouseEvent event) {
@@ -24,11 +36,20 @@ public class TrangChu_Control {
 
     @FXML
     private void handleMouseExited(MouseEvent event) {
-        ((Button) event.getSource()).setStyle("-fx-background-color: #00b6f3; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;");
+        Button button = (Button) event.getSource();
+
+        // Chỉ quay về màu mặc định nếu nút không phải là nút đã chọn
+        if (button != selectedButton) {
+            button.setStyle("-fx-background-color: #00b6f3; -fx-border-color: #ffffff; -fx-text-fill: #ffffff;");
+        } }
+
+    @FXML
+    public void handleDatBanClick() {
     }
 
     @FXML
-    public void handleDatBanClick(MouseEvent mouseEvent) {
+    public void  handleMonAnClick(){
+
     }
 
     @FXML
@@ -63,4 +84,31 @@ public class TrangChu_Control {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleButtonClick(javafx.event.ActionEvent actionEvent) {
+        Button clickedButton = (Button) actionEvent.getSource();
+
+        // Nếu nút đã chọn khác null, quay về màu mặc định
+        if (selectedButton != null) {
+            selectedButton.setStyle("-fx-background-color: #00bfff; -fx-border-color: #ffffff; -fx-text-fill: #fafafa;"); // Màu mặc định
+        }
+
+        // Đặt màu cho nút hiện tại và gán nó làm `selectedButton`
+        clickedButton.setStyle("-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-text-fill: #00b6f3;");
+        selectedButton = clickedButton; // Cập nhật nút đã chọn
+
+        // Gọi hàm xử lý dựa trên nút được nhấn
+        if (clickedButton == btnMonAn) {
+            handleMonAnClick();
+        } else if (clickedButton == btnNhanVien) {
+            handleNhanVienClick();
+        } else if (clickedButton == btnThanhToan) {
+            handleThanhToanClick();
+        } else if (clickedButton == btnThongKe) {
+            handleThongKeClick();
+        } else if (clickedButton == btnDatBan) {
+            handleDatBanClick();
+        }
+    }
+
 }

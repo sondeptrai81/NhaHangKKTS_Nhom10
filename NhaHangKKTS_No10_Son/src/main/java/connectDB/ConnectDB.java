@@ -19,16 +19,5 @@ public class ConnectDB {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            Connection conn = connect();
-            if (conn != null) {
-                System.out.println("Connection successful!");
-            } else {
-                System.out.println("Failed to connect.");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
+
 }

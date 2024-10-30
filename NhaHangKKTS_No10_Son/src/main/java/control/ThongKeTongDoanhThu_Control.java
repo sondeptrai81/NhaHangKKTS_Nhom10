@@ -2,8 +2,9 @@ package control;
 
 import dao.ThongKeTheoDoanhThu_DAO;
 import entity.HoaDon;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
@@ -13,41 +14,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.MouseEvent;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.chart.PieChart;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.util.Callback;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.input.MouseButton;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.util.Callback;
 
-import java.io.DataInput;
-import java.sql.Time;
+import java.io.IOException;
 import java.time.LocalDate;
-import java.time.Year;
-import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.stream.IntStream;
 public class ThongKeTongDoanhThu_Control {
     @FXML
     private TextField textTim;
@@ -83,7 +57,6 @@ public class ThongKeTongDoanhThu_Control {
     @FXML
     public void initialize() {
 
-//        // Tạo cột STT
         TableColumn<HoaDon, Integer> colStt = new TableColumn<>("STT");
         colStt.setCellValueFactory(column ->
                 new ReadOnlyObjectWrapper<>(invoiceTable.getItems().indexOf(column.getValue()) + 1)
@@ -100,6 +73,32 @@ public class ThongKeTongDoanhThu_Control {
         tinhTongDoanhThu();
         hienThiDoanhThuTrenLineChart();
         hienThiDoanhThuTrenPieChart();
+        invoiceTable.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                HoaDon selectedInvoice = invoiceTable.getSelectionModel().getSelectedItem();
+                if (selectedInvoice != null) {
+
+                    showInvoiceDetails(selectedInvoice);
+                }
+            }
+        });
+
+    }
+    private void showInvoiceDetails(HoaDon invoice) {
+        try {
+            // Load FXML của dialog
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/InvoiceTable_Dialog.fxml"));
+            Parent root = loader.load();
+
+            // Tạo một Stage mới cho dialog
+            Stage dialogStage = new Stage();
+            dialogStage.setTitle("Chi tiết hóa đơn");
+            dialogStage.initModality(Modality.APPLICATION_MODAL);
+            dialogStage.setScene(new Scene(root));
+            dialogStage.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void tinhTongDoanhThu(){
@@ -107,8 +106,9 @@ public class ThongKeTongDoanhThu_Control {
         for (HoaDon hoaDon : invoiceTable.getItems()) {
             tongDoanhthu += hoaDon.getTongTien();
         }
-       lblTongDoanhThu.setText(String.valueOf(tongDoanhthu)+"VNĐ");
+       lblTongDoanhThu.setText(String.valueOf(tongDoanhthu)+"  VNĐ");
     }
+
 
 
     @FXML
@@ -174,8 +174,9 @@ public class ThongKeTongDoanhThu_Control {
     }
 
 
+
+
     public void hienThiDoanhThuTrenPieChart() {
-        // Lấy danh sách hóa đơn từ TableView
         ObservableList<HoaDon> hoaDonList = invoiceTable.getItems();
 
         // Tạo danh sách dữ liệu cho PieChart
@@ -183,7 +184,7 @@ public class ThongKeTongDoanhThu_Control {
 
         // Duyệt qua danh sách hóa đơn và thêm dữ liệu vào PieChart
         for (HoaDon hoaDon : hoaDonList) {
-            String tenKhachHang = hoaDon.getTenKH();  // Lấy tên khách hàng (hoặc có thể là tên nhân viên, bàn, ...)
+            String tenKhachHang = hoaDon.getTenKH();
             double doanhThu = hoaDon.getTongTien();   // Lấy tổng tiền của hóa đơn
 
             // Thêm dữ liệu vào PieChart (TenKH là tên, doanhThu là giá trị)
@@ -196,6 +197,8 @@ public class ThongKeTongDoanhThu_Control {
         // Thêm dữ liệu mới vào PieChart
         revenuePieChart.setData(pieChartData);
     }
+
+
 
 }
 

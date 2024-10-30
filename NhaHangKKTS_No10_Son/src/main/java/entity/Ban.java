@@ -1,11 +1,13 @@
 package entity;
 
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class Ban {
 	private String maBan;
 	private int soLuongGhe;
 	private KhuVuc khuVuc;
+	private HoaDon hoaDon;
 	private TrangThaiBan trangThaiBan;
 	public String getMaBan() {
 		return maBan;
@@ -22,6 +24,18 @@ public class Ban {
 	public KhuVuc getKhuVuc() {
 		return khuVuc;
 	}
+
+	public HoaDon getHoaDon() {
+		return hoaDon;
+	}
+
+	public int getSoLanDat() {
+		return soLanDat;
+	}
+
+
+
+	private int soLanDat;
 	public void setKhuVuc(KhuVuc khuVuc) {
 		this.khuVuc = khuVuc;
 	}
@@ -39,6 +53,24 @@ public class Ban {
 		this.khuVuc = khuVuc;
 		this.trangThaiBan = trangThaiBan;
 	}
+	public Ban(String maBan,KhuVuc khuVuc, LocalDate ngayTaoHD, int soLanDat, double doanhThu) {
+		super();
+		this.maBan = maBan;
+		this.khuVuc = khuVuc;
+		this.hoaDon= new HoaDon();
+		this.hoaDon.setNgayTaoHD(ngayTaoHD);
+		this.soLanDat= soLanDat;
+		this.hoaDon.setTongTien(doanhThu);
+	}
+	public LocalDate getNgayTaoHD() {
+		return hoaDon.getNgayTaoHD();
+	}
+
+	public double getDoanhThu(){
+		return hoaDon.getTongTien();
+	}
+
+
 	public Ban(String maBan) {
 		super();
 		this.maBan = maBan;

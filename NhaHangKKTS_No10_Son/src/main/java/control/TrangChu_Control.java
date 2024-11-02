@@ -88,16 +88,14 @@ public class TrangChu_Control {
     private void handleButtonClick(javafx.event.ActionEvent actionEvent) {
         Button clickedButton = (Button) actionEvent.getSource();
 
-        // Nếu nút đã chọn khác null, quay về màu mặc định
         if (selectedButton != null) {
             selectedButton.setStyle("-fx-background-color: #00bfff; -fx-border-color: #ffffff; -fx-text-fill: #fafafa;"); // Màu mặc định
         }
 
         // Đặt màu cho nút hiện tại và gán nó làm `selectedButton`
         clickedButton.setStyle("-fx-background-color: #ffffff; -fx-border-color: #ffffff; -fx-text-fill: #00b6f3;");
-        selectedButton = clickedButton; // Cập nhật nút đã chọn
+        selectedButton = clickedButton;
 
-        // Gọi hàm xử lý dựa trên nút được nhấn
         if (clickedButton == btnMonAn) {
             handleMonAnClick();
         } else if (clickedButton == btnNhanVien) {

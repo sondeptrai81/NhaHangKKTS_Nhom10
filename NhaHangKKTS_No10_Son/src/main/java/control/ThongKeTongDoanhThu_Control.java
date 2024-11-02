@@ -1,6 +1,7 @@
 package control;
 
 import dao.ThongKeTheoDoanhThu_DAO;
+import entity.ChiTietHD_MonAn;
 import entity.HoaDon;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -49,6 +50,7 @@ public class ThongKeTongDoanhThu_Control {
     private PieChart  revenuePieChart;
 
 
+
     @FXML
     private DatePicker datePicker;
 
@@ -90,16 +92,22 @@ public class ThongKeTongDoanhThu_Control {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/InvoiceTable_Dialog.fxml"));
             Parent root = loader.load();
 
+            // Lấy controller của dialog và truyền mã hóa đơn
+            InvoiceTableDialog_Control controller = loader.getController();
+            controller.setInvoiceData(invoice.getMaHD());
+            System.out.println(invoice.getMaHD());
+
             // Tạo một Stage mới cho dialog
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Chi tiết hóa đơn");
             dialogStage.initModality(Modality.APPLICATION_MODAL);
             dialogStage.setScene(new Scene(root));
             dialogStage.showAndWait();
-        } catch (Exception e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public void tinhTongDoanhThu(){
         double tongDoanhthu=0.0;
@@ -115,22 +123,39 @@ public class ThongKeTongDoanhThu_Control {
     public void handleEnterKey() {
         textTim.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                String inputText = textTim.getText();
-                textTim.setText("");
+                handleSearch();
             }
         });
+    }
+
+
+
+    @FXML
+    public void handleClickSearch() {
+        handleSearch();
+
+    }
+
+    @FXML
+    private void handleSearch() {
+        String inputText = textTim.getText();
+        textTim.setText("");
+
+        if (inputText.isEmpty()) {
+            invoiceTable.setItems(hoaDonList); // Reset to full list if search is empty
+        } else {
+            ObservableList<HoaDon> filteredList = FXCollections.observableArrayList(
+                    hoaDonList.stream()
+                            .filter(hoaDon -> hoaDon.getSDT().contains(inputText))
+                            .toList()
+            );
+            invoiceTable.setItems(filteredList);
+        }
     }
 
     @FXML
     public void handleClickText() {
         textTim.selectAll();
-    }
-
-    @FXML
-    public void handleClickSearch() {
-        String inputText = textTim.getText();
-        textTim.setText("");
-
     }
 
     @FXML
@@ -159,14 +184,14 @@ public class ThongKeTongDoanhThu_Control {
             doanhThuTheoNgay.put(ngay, doanhThuTheoNgay.getOrDefault(ngay, 0.0) + doanhThu);
         }
 
-        // Thêm dữ liệu vào series từ Map (X là ngày, Y là tổng doanh thu)
+
         for (Map.Entry<String, Double> entry : doanhThuTheoNgay.entrySet()) {
             String ngay = entry.getKey();
             double tongDoanhThu = entry.getValue();
             series.getData().add(new XYChart.Data<>(ngay, tongDoanhThu));
         }
 
-        // Xóa các series cũ nếu cần (để không bị trùng lặp)
+
         dailyRevenueChart.getData().clear();
 
         // Thêm series mới vào LineChart

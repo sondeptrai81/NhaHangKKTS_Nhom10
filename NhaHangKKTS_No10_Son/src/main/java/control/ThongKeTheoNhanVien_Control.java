@@ -28,23 +28,44 @@ public class ThongKeTheoNhanVien_Control {
 
     @FXML
     private TextField textTim;
+    ObservableList<NhanVien> listNhanVien = ThongKeTheoNhanVien_DAO.getListNhanVien();
+
 
     @FXML
     public void handleEnterKey() {
         textTim.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                String inputText = textTim.getText();
-                textTim.setText("");
+                handleSearch();
             }
         });
     }
 
-    public void handleClickText(){
-        textTim.selectAll();
-    }
+
+
+    @FXML
     public void handleClickSearch() {
+        handleSearch();
+
+    }
+
+    @FXML
+    private void handleSearch() {
         String inputText = textTim.getText();
         textTim.setText("");
+
+        if (inputText.isEmpty()) {
+            nhanVienTable.setItems(listNhanVien);
+        } else {
+            ObservableList<NhanVien> filteredList = FXCollections.observableArrayList(
+                    listNhanVien.stream()
+                            .filter(nhanVien -> nhanVien.getSDT().contains(inputText))
+                            .toList()
+            );
+            nhanVienTable.setItems(filteredList);
+        }
+    }
+    public void handleClickText(){
+        textTim.selectAll();
     }
     @FXML
     private TableView<NhanVien> nhanVienTable;
@@ -66,7 +87,7 @@ public class ThongKeTheoNhanVien_Control {
 
     @FXML
     public void initialize() {
-        ObservableList<NhanVien> listNhanVien = ThongKeTheoNhanVien_DAO.getListNhanVien();
+
 
         colMaNV.setCellValueFactory(new PropertyValueFactory<>("maNV"));
         colTenNV.setCellValueFactory(new PropertyValueFactory<>("tenNV"));

@@ -1,6 +1,7 @@
 package dao;
 
 import connectDB.ConnectDB;
+import entity.ChiTietHD_MonAn;
 import entity.HoaDon;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +18,7 @@ public class ThongKeTheoDoanhThu_DAO {
         ResultSet rs = null;
 
         try {
-            conn = ConnectDB.connect();  // Kết nối tới CSDL
+            conn = ConnectDB.connect();
             String query = "SELECT hd.maHD, " +
                     "kh.tenKH, kh.SDT, hd.NgayTaoHD, hd.GioDatBan, b.MaBan, nv.tenNV, hd.TongTien " +
                     "FROM HoaDon hd " +
@@ -59,6 +60,46 @@ public class ThongKeTheoDoanhThu_DAO {
         return list;
     }
 
+
+    public ObservableList<ChiTietHD_MonAn> getChiTietHoaDonList(String maHD) {
+        ObservableList<ChiTietHD_MonAn> list = FXCollections.observableArrayList();
+        Connection conn = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = ConnectDB.connect();
+            String query = "SELECT ct.maHD, ma.tenMonAn, ma.gia, ct.soLuong, ma.VAT, ct.thanhTien " +
+                    "FROM ChiTietHD_MonAn ct " +
+                    "JOIN MonAn ma ON ct.maMonAn = ma.maMonAn " +
+                    "WHERE ct.maHD = ?";
+            pstmt = conn.prepareStatement(query);
+            pstmt.setString(1, maHD);
+            rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                String tenMonAn = rs.getString("tenMonAn");
+                double gia = rs.getDouble("gia");
+                int soLuong = rs.getInt("soLuong");
+                int vat = rs.getInt("VAT");
+                double thanhTien = rs.getDouble("thanhTien");
+
+                ChiTietHD_MonAn chiTiet = new ChiTietHD_MonAn(maHD, tenMonAn, gia, soLuong, vat, thanhTien);
+                list.add(chiTiet);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null) rs.close();
+                if (pstmt != null) pstmt.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
 
 }
 

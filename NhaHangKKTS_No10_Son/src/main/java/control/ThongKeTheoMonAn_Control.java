@@ -3,6 +3,7 @@ package control;
 import dao.ThongKeTheoMonAn_DAO;
 import entity.ChiTietHD_MonAn;
 import entity.MonAn;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -17,6 +18,8 @@ import java.util.Locale;
 public class ThongKeTheoMonAn_Control {
 
 
+    ObservableList<ChiTietHD_MonAn> listMonAn = ThongKeTheoMonAn_DAO.getMonAnList(10,2024);
+
     @FXML
     private TextField textTim;
 
@@ -24,22 +27,38 @@ public class ThongKeTheoMonAn_Control {
     public void handleEnterKey() {
         textTim.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) {
-                String inputText = textTim.getText();
-                textTim.setText("");
-//                System.out.println("Bạn đã nhập: " + inputText);
+                handleSearch();
             }
         });
     }
 
+
+
+    @FXML
+    public void handleClickSearch() {
+        handleSearch();
+
+    }
+
+    @FXML
+    private void handleSearch() {
+        String inputText = textTim.getText();
+        textTim.setText("");
+
+        if (inputText.isEmpty()) {
+            tableView.setItems(listMonAn); // Reset to full list if search is empty
+        } else {
+            ObservableList<ChiTietHD_MonAn> filteredList = FXCollections.observableArrayList(
+                    listMonAn.stream()
+                            .filter(monAn -> monAn.getTenMonAn().contains(inputText))
+                            .toList()
+            );
+            tableView.setItems(filteredList);
+        }
+    }
     public void handleClickText(){
         textTim.selectAll();
     }
-    public void handleClickSearch() {
-        String inputText = textTim.getText();
-        textTim.setText("");
-//        System.out.println("Bạn đã nhập: " + inputText);
-    }
-
     @FXML
     private DatePicker datePicker;
 
@@ -65,7 +84,6 @@ public class ThongKeTheoMonAn_Control {
     private TableColumn<MonAn, Double> colDoanhThu;
     @FXML
     public void initialize() {
-        ObservableList<ChiTietHD_MonAn> listMonAn = ThongKeTheoMonAn_DAO.getMonAnList(10,2024);
 
         colTenMonAn.setCellValueFactory(new PropertyValueFactory<>("tenMonAn"));
         colGia.setCellValueFactory(new PropertyValueFactory<>("gia"));

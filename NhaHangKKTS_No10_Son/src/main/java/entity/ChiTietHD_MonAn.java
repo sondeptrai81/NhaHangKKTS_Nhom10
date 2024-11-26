@@ -22,6 +22,33 @@ public class ChiTietHD_MonAn {
 		this.thanhTien = thanhTien;
 	}
 
+	public ChiTietHD_MonAn(String tenMonAn, double gia, int soLuong,double tongTien) {
+		this.monAn = new MonAn();
+		this.monAn.setTenMonAn(tenMonAn);
+		this.monAn.setGia(gia);
+		this.soLuong = soLuong;
+		this.hoaDon= new HoaDon();
+		this.hoaDon.setTongTien(tongTien);
+	}
+	public ChiTietHD_MonAn(String maHD, String tenMonAn, double gia, int soLuong, double vat, double thanhTien) {
+		this.hoaDon = new HoaDon();
+		this.hoaDon.setMaHD(maHD);
+		this.monAn= new MonAn();
+		this.monAn.setTenMonAn(tenMonAn);
+		this.monAn.setGia(gia);
+		this.soLuong = soLuong;
+		this.monAn.setVAT(vat);
+		this.thanhTien = thanhTien;
+	}
+
+
+
+
+
+	public double getDoanhThu() {
+		return monAn.getGia() * soLuong;
+	}
+
 	public ChiTietHD_MonAn() {
 		super();
 	}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.InvoiceTableDialog_Control">
+    <center>
+        <VBox alignment="CENTER" spacing="10">
+            <!-- Table View for Item List -->
+            <TableView fx:id="tableView" prefHeight="400" prefWidth="700">
+                <columns>
+                    <TableColumn fx:id="colTenMonAn" prefWidth="200" text="Tên món ăn" />
+                    <TableColumn fx:id="colGia" prefWidth="100" text="Giá" />
+                    <TableColumn fx:id="colSoLuong" prefWidth="100" text="Số lượng" />
+                    <TableColumn fx:id="colVAT" prefWidth="100" text="VAT" />
+                    <TableColumn fx:id="colThanhTien" prefWidth="150" text="Thành tiền" />
+                </columns>
+            </TableView>
+
+            <VBox spacing="10">
+                <HBox alignment="CENTER_LEFT" spacing="40.0">
+                    <Label prefHeight="18.0" prefWidth="99.0" text="Tổng thanh toán" />
+                    <TextField fx:id="txtTongThanhToan" disable="true" editable="false" prefWidth="150" />
+                    <Label text="VND">
+                  <HBox.margin>
+                     <Insets left="-30.0" />
+                  </HBox.margin></Label>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" spacing="40.0">
+                    <Label prefHeight="18.0" prefWidth="98.0" text="Tiền khách đưa" />
+                    <TextField fx:id="txtTienKhachDua" disable="true" prefHeight="26.0" prefWidth="152.0" />
+                    <Label text="VND">
+                  <HBox.margin>
+                     <Insets left="-30.0" />
+                  </HBox.margin></Label>
+                </HBox>
+                <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" spacing="40.0">
+                    <Label prefHeight="18.0" prefWidth="100.0" text="Tiền trả lại" />
+                    <TextField fx:id="txtTienTraLai" disable="true" editable="false" prefWidth="150" />
+                    <Label text="VND">
+                  <HBox.margin>
+                     <Insets left="-30.0" />
+                  </HBox.margin></Label>
+                </HBox>
+            </VBox>
+        </VBox>
+    </center>
+</BorderPane>

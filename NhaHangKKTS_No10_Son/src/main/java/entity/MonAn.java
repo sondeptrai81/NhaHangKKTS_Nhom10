@@ -3,6 +3,7 @@ package entity;
 import java.util.Objects;
 
 public class MonAn {
+	private ChiTietHD_MonAn chiTietHD_monAn;
 	private String maMonAn;
 	private String tenMonAn;
 	private LoaiMonAn loaiMonAn;
@@ -10,8 +11,18 @@ public class MonAn {
 	private TrangThaiMonAn trangThaiMonAn;
 	private double VAT;
 
+	public ChiTietHD_MonAn getChiTietHD_monAn() {
+		return chiTietHD_monAn;
+	}
+
+	public void setChiTietHD_monAn(ChiTietHD_MonAn chiTietHD_monAn) {
+		this.chiTietHD_monAn = chiTietHD_monAn;
+	}
+
+	private String hinhAnh;
+
 	public MonAn(String maMonAn, String tenMonAn, LoaiMonAn loaiMonAn, double gia, TrangThaiMonAn trangThaiMonAn,
-			double vAT) {
+			double vAT, String hinhAnh) {
 		super();
 		this.maMonAn = maMonAn;
 		this.tenMonAn = tenMonAn;
@@ -19,6 +30,15 @@ public class MonAn {
 		this.gia = gia;
 		this.trangThaiMonAn = trangThaiMonAn;
 		this.VAT = vAT;
+		this.hinhAnh = hinhAnh;
+	}
+
+	public MonAn(String tenMonAn, double gia,int soLuong, double doanhThu) {
+		this.tenMonAn = tenMonAn;
+		this.gia = gia;
+		this.chiTietHD_monAn= new ChiTietHD_MonAn();
+		this.chiTietHD_monAn.setSoLuong(soLuong);
+		this.chiTietHD_monAn.setThanhTien(doanhThu);
 	}
 
 	public MonAn() {
@@ -69,8 +89,24 @@ public class MonAn {
 		return VAT;
 	}
 
-	public void setVAT(double vat) {
-		this.VAT = vat;
+	public void setVAT(double vAT) {
+		VAT = vAT;
+	}
+
+	public String getHinhAnh() {
+		return hinhAnh;
+	}
+
+	public void setHinhAnh(String hinhAnh) {
+		this.hinhAnh = hinhAnh;
+	}
+
+	public String getMaLoai(){
+		return loaiMonAn != null ? loaiMonAn.getMaLoai() : "";
+	}
+
+	public String getTenLoai(){
+		return loaiMonAn != null ? loaiMonAn.getTenLoai() : "";
 	}
 
 	@Override
@@ -93,7 +129,7 @@ public class MonAn {
 	@Override
 	public String toString() {
 		return "MonAn [maMonAn=" + maMonAn + ", tenMonAn=" + tenMonAn + ", loaiMonAn=" + loaiMonAn + ", gia=" + gia
-				+ ", trangThaiMonAn=" + trangThaiMonAn + ", VAT=" + VAT + "]";
+				+ ", trangThaiMonAn=" + trangThaiMonAn + ", VAT=" + VAT + ", hinhAnh=" + hinhAnh +"]";
 	}
 
 }

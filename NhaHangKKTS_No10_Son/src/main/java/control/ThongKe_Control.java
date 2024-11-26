@@ -28,6 +28,10 @@ public class ThongKe_Control {
     @FXML
     private Tab tabNhanVien;
     @FXML
+    private Tab tabBanDat;
+    @FXML
+    private Tab tabDoanhThu;
+    @FXML
     public void initialize() {
         try {
             AnchorPane tongDoanhThuContent = FXMLLoader.load(getClass().getResource("/gui/ThongKeTongDoanhThu.fxml"));
@@ -38,6 +42,12 @@ public class ThongKe_Control {
 
             AnchorPane nhanVienContent = FXMLLoader.load(getClass().getResource("/gui/ThongKeTheoNhanVien.fxml"));
             tabNhanVien.setContent(nhanVienContent);
+
+            AnchorPane banDatContent = FXMLLoader.load(getClass().getResource("/gui/ThongKeTheoBanDat.fxml"));
+            tabBanDat.setContent(banDatContent);
+
+            AnchorPane doanhThuContent = FXMLLoader.load(getClass().getResource("/gui/ThongKeDoanhThu.fxml"));
+            tabDoanhThu.setContent(doanhThuContent);
 
         } catch (IOException e) {
             e.printStackTrace();

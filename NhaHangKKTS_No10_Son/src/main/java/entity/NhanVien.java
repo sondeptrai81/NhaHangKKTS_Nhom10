@@ -13,6 +13,32 @@ public class NhanVien {
 	private LocalDate ngayVaoLam;
 	private LocalDate ngayNghiLam;
 	private LocalDate ngaySinh;
+	private HoaDon hoaDon;
+	private double doanhThu;
+
+	public String getsDT() {
+		return sDT;
+	}
+
+	public void setsDT(String sDT) {
+		this.sDT = sDT;
+	}
+
+	public HoaDon getHoaDon() {
+		return hoaDon;
+	}
+
+	public void setHoaDon(HoaDon hoaDon) {
+		this.hoaDon = hoaDon;
+	}
+
+	public double getDoanhThu() {
+		return doanhThu;
+	}
+
+	public void setDoanhThu(double doanhThu) {
+		this.doanhThu = doanhThu;
+	}
 
 	public NhanVien(String maNV, String tenNV, boolean gioiTinh, String sDT, TrangThaiNhanVien trangThai, String chucVu, LocalDate ngayVaoLam,
 					LocalDate ngayNghiLam, LocalDate ngaySinh) {
@@ -28,8 +54,21 @@ public class NhanVien {
 		this.ngaySinh = ngaySinh;
 	}
 
+	public NhanVien(String maNV, String tenNV, String sDT, TrangThaiNhanVien trangThai, double doanhThu) {
+		this.maNV = maNV;
+		this.tenNV = tenNV;
+		this.sDT = sDT;
+		this.trangThai = trangThai;
+		this.doanhThu = doanhThu;
+	}
+
+
 	public NhanVien() {
 		super();
+	}
+
+	public NhanVien(String maNV) {
+		this.maNV = maNV;
 	}
 
 	public String getMaNV() {
@@ -43,6 +82,7 @@ public class NhanVien {
 	public String getTenNV() {
 		return tenNV;
 	}
+
 
 	public void setTenNV(String tenNV) {
 		this.tenNV = tenNV;
@@ -121,6 +161,7 @@ public class NhanVien {
 		NhanVien other = (NhanVien) obj;
 		return Objects.equals(maNV, other.maNV);
 	}
+
 
 	@Override
 	public String toString() {
